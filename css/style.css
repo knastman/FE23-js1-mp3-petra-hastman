@@ -1,0 +1,103 @@
+html {
+  font-size: 15px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+form{
+  text-align: center;
+  margin-bottom:50px;
+}
+img{
+  max-width:100%;
+}
+h1, h2, h3, h4{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-size: 1.85em;
+}
+
+h2{
+  margin:5px 0 5px 0;
+  font-size:1.6em;
+}
+
+h3{
+  margin:0px 0 10px 0;
+  font-size:1.2em;
+}
+
+h4{
+  margin-top:0;
+  font-size:1.2em;
+}
+#searchResult{
+  margin:15px 0 0px 0;
+  font-size:1.3em;
+}
+
+section{
+  padding:20px;
+}
+
+#resultCountries{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.countryInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.countryInfo > div{
+  width:50% ;
+  text-align: center;
+
+}
+
+#resultCountries > div{
+  width: 50%;
+  text-align: center;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-bottom:20px;
+}
+.countryInfo > p{
+  margin: 0px 0 5px 0;
+}
+
+.countryInfo  img{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+
+hr{
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(108, 107, 107, 0), rgba(163, 159, 159, 0.75), rgba(122, 120, 120, 0));
+
+}
+
+/********************* MEDIA QUERIES ********************/
+
+@media only screen and (max-width: 600px){
+  .countryInfo {
+    flex-direction: column;
+  }
+
+  .countryInfo > div{
+    width:95% ;
+    text-align: center;
+  }
+
+  #resultCountries > div{
+    width: 95%;
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/3a14b5ad60.js" crossorigin="anonymous"></script>
+  <script src="./js/script.js" defer></script>
+  <link href="./css/style.css" rel="stylesheet" />
+  <title>Miniprojekt 3 - Rest Countries</title>
+</head>
+<body>
+  <main>
+    <h1>Search Countries</h1>
+    <form>
+      <input type="text" placeholder="Country or language" id="searchQuery" name="CountryLanguage">
+      <input type="radio" id="countryName" name="searchChoice" value="countryName" checked />
+      <label for="countryName">Name</label>
+      <input type="radio" id="countryLanguage" name="searchChoice" value="countryLanguage" />
+      <label for="countryLanguage">Language</label>
+      <button id="button">Get countries</button>
+    </form> 
+    <hr />
+    <h2 id="searchResult"></h2>
+    <section id="resultCountries">
+      
+    </section>
+  </main>
+</body>
+</html>

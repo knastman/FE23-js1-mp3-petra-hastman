@@ -45,7 +45,7 @@ async function fetchCountryInfo(countryOrLanguage, searchChoice){
     return data;
   }
   else if(response.status === 404){ //om statuskoden är 404
-      throw 404;
+    throw 404;
   }
 }
 

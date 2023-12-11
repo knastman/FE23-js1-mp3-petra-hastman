@@ -102,6 +102,7 @@ function displayCountry(countryInfo){
 *********************************************/
 
   function displayError(error) {
+    const searchResult = document.querySelector('#resultCountries');
     const h3 = document.createElement('h3');
 
     if (error === 404) { 
@@ -110,5 +111,5 @@ function displayCountry(countryInfo){
     else{ 
         h3.innerText = 'Something went wrong, try again later' 
     }
-    document.body.append(h3);
+    searchResult.append(h3);
   }

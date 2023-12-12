@@ -1,4 +1,3 @@
-
 /*********************************
  Get search query from form
 **********************************/
@@ -15,13 +14,12 @@ form.addEventListener('submit', (event) => {
 
   fetchCountryInfo(searchQuery, countryOrLanguage)
     .then(displayCountry)
-    .catch(displayError)
+    .catch(displayError);
  
   resultCountriesSection.innerHTML ='';
   form.reset();
   
 });
-
 
 /******************************************
  Get country info from API URL
@@ -56,20 +54,12 @@ async function fetchCountryInfo(countryOrLanguage, searchChoice){
 
 function displayCountry(countryInfo){
 
-  //SORTERNING
-  countryInfo.sort((a, b) => a.population - b.population)
-  countryInfo.reverse((a, b) => a.population - b.population);
-
   searchResultHeader.innerText = 'Search result:';
 
-  for (i=0; i<countryInfo.length;i++ ){
+  //SORTERNING
+  countryInfo.sort((a, b) => b.population - a.population);
 
-    //Put countryinfo in varibles
-    const countryName = countryInfo[i].name.official;
-    const subregion = countryInfo[i].subregion;
-    const capital = countryInfo[i].capital;
-    const population = countryInfo[i].population;
-    const flagImgUrl = countryInfo[i].flags.png;
+  for (let i=0; i<countryInfo.length; i++ ){
 
     //Create elements for display
     const h2Name = document.createElement('h2');
@@ -78,27 +68,27 @@ function displayCountry(countryInfo){
     const pPopulation = document.createElement('p');
     const flagImg = document.createElement('img');
     const countryInfoDiv = document.createElement('div');
-    const divleft = document.createElement('div');
+    const divLeft = document.createElement('div');
     const divRight = document.createElement('div');
     
     countryInfoDiv.className = "countryInfo";
 
     resultCountriesSection.append(countryInfoDiv);
-    countryInfoDiv.append(divleft, divRight);
-    divleft.append(h2Name, h3Subregion, pCapital, pPopulation);
+    countryInfoDiv.append(divLeft, divRight);
+    divLeft.append(h2Name, h3Subregion, pCapital, pPopulation);
     divRight.append(flagImg);
 
     //Element content
-    h2Name.innerText = countryName;
-    h3Subregion.innerText = subregion;
-    pCapital.innerText = 'Capital city: ' + capital;
-    pPopulation.innerText = 'Population: ' + population;
-    flagImg.src = flagImgUrl;
+    h2Name.innerText = countryInfo[i].name.official;
+    h3Subregion.innerText = countryInfo[i].subregion;
+    pCapital.innerText = 'Capital city: ' + countryInfo[i].capital;
+    pPopulation.innerText = 'Population: ' + countryInfo[i].population;
+    flagImg.src = countryInfo[i].flags.png;
   }
 }
 
 /********************************************
-   ERROR
+   Error
 *********************************************/
 
   function displayError(error) {

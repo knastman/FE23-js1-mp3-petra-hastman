@@ -38,13 +38,14 @@ async function fetchCountryInfo(countryOrLanguage, searchChoice){
   }
 
   const url = `https://restcountries.com/v3.1/${nameOrLang}/${countryOrLanguage}?fields=name,flags,capital,population,subregion,languages`;
+
   const response = await fetch(url);
 
   if(response.ok){ 
     const data = await response.json();
     return data;
   }
-  else if(response.status === 404){ //om statuskoden är 404
+  else if(response.status === 404){
     throw 404;
   }
 }
@@ -54,13 +55,12 @@ async function fetchCountryInfo(countryOrLanguage, searchChoice){
 **********************************/
 
 function displayCountry(countryInfo){
-  // console.log('countryInfo'); 
-  // console.log(countryInfo); 
 
-  searchResultHeader.innerText = 'Search result:';
   //SORTERNING
   countryInfo.sort((a, b) => a.population - b.population)
   countryInfo.reverse((a, b) => a.population - b.population);
+
+  searchResultHeader.innerText = 'Search result:';
 
   for (i=0; i<countryInfo.length;i++ ){
 
@@ -68,32 +68,32 @@ function displayCountry(countryInfo){
     const countryName = countryInfo[i].name.official;
     const subregion = countryInfo[i].subregion;
     const capital = countryInfo[i].capital;
-    const populationnr = countryInfo[i].population;
-    const flagUrl = countryInfo[i].flags.png;
+    const population = countryInfo[i].population;
+    const flagImgUrl = countryInfo[i].flags.png;
 
     //Create elements for display
     const h2Name = document.createElement('h2');
     const h3Subregion = document.createElement('h3');
     const pCapital = document.createElement('p');
     const pPopulation = document.createElement('p');
-    const img = document.createElement('img');
+    const flagImg = document.createElement('img');
     const countryInfoDiv = document.createElement('div');
     const divleft = document.createElement('div');
     const divRight = document.createElement('div');
+    
     countryInfoDiv.className = "countryInfo";
 
     resultCountriesSection.append(countryInfoDiv);
     countryInfoDiv.append(divleft, divRight);
     divleft.append(h2Name, h3Subregion, pCapital, pPopulation);
-    divRight.append(img);
+    divRight.append(flagImg);
 
     //Element content
     h2Name.innerText = countryName;
     h3Subregion.innerText = subregion;
-
     pCapital.innerText = 'Capital city: ' + capital;
-    pPopulation.innerText = 'Population: ' + populationnr;
-    img.src = flagUrl;
+    pPopulation.innerText = 'Population: ' + population;
+    flagImg.src = flagImgUrl;
   }
 }
 
@@ -102,14 +102,14 @@ function displayCountry(countryInfo){
 *********************************************/
 
   function displayError(error) {
-    const searchResult = document.querySelector('#resultCountries');
-    const h3 = document.createElement('h3');
+    const h3ErrorMess = document.createElement('h3');
 
     if (error === 404) { 
-        h3.innerText = 'No country or language was found. Try another query.';
+      h3ErrorMess.innerText = 'No country or language was found. Try another query.';
     }
     else{ 
-        h3.innerText = 'Something went wrong, try again later' 
+      h3ErrorMess.innerText = 'Something went wrong, try again later.' 
     }
-    searchResult.append(h3);
+    searchResultHeader.innerText = '';
+    resultCountriesSection.append(h3ErrorMess);
   }

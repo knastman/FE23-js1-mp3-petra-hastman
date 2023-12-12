@@ -35,7 +35,7 @@ async function fetchCountryInfo(countryOrLanguage, searchChoice){
     nameOrLang = 'lang';
   }
 
-  const url = `https://restcountries.com/v3.1/${nameOrLang}/${countryOrLanguage}?fields=name,flags,capital,population,subregion,languages`;
+  const url = `https://restcountries.com/v3.1/${nameOrLang}/${countryOrLanguage}?fields=name,flags,capital,population,subregion`;
 
   const response = await fetch(url);
 
